@@ -1,6 +1,6 @@
 //#include <stdlib.h>
 #include <math.h>
-#include "../Lib/m_pd.h"
+#include "m_pd.h"
 
 #define MAX_BUFFER_SIZE 2048
 
@@ -21,22 +21,22 @@ typedef struct _pluck_tilde {
 t_int *pluck_tilde_perform(t_int *w)
 {
     t_pluck_tilde *x = (t_pluck_tilde *)(w[1]);
-	t_float *out = (t_float *)(w[2]);
+    t_float *out = (t_float *)(w[2]);
     t_int n = (t_int)(w[3]);
     
     int delay = x->delay;
     int index = x->index;
-	int prevIndex = x->index % delay;
-	float fdry = x->feedback * x->dry;
-	float flp = x->feedback * (1.0f - x->dry);
+    int prevIndex = x->index % delay;
+    float fdry = x->feedback * x->dry;
+    float flp = x->feedback * (1.0f - x->dry);
     float alpha = x->alpha;
     
-	while(n--){
-		index = (prevIndex + 1) % delay;
-		x->buffer[index] = fdry * x->buffer[index] + flp * (alpha * x->buffer[index] + (1.0f - alpha) * x->buffer[prevIndex]);
+    while(n--){
+        index = (prevIndex + 1) % delay;
+        x->buffer[index] = fdry * x->buffer[index] + flp * (alpha * x->buffer[index] + (1.0f - alpha) * x->buffer[prevIndex]);
         *out++ = x->buffer[index];
-		prevIndex = index;
-	}
+        prevIndex = index;
+    }
     
     x->index = index;
     
@@ -45,12 +45,12 @@ t_int *pluck_tilde_perform(t_int *w)
 
 void pluck_tilde_freq (t_pluck_tilde *x, t_floatarg freq)
 {
-	if(freq <= 0) {
-		error("pluck: freq should be be >= 0");
-		return;
-	}
+    if(freq <= 0) {
+        error("pluck: freq should be be >= 0");
+        return;
+    }
     int delay = sys_getsr() / freq;
-	x->delay = delay > MAX_BUFFER_SIZE ? MAX_BUFFER_SIZE : delay;
+    x->delay = delay > MAX_BUFFER_SIZE ? MAX_BUFFER_SIZE : delay;
 }
 
 void pluck_tilde_feedback (t_pluck_tilde *x, t_floatarg feedback)
@@ -85,7 +85,7 @@ void pluck_tilde_bang(t_pluck_tilde *x)
     // fill buffer with noise, see d_osc.c in pd source code for noise generation
     int val = 307 * 1319;
     for( int i = 0 ; i < MAX_BUFFER_SIZE; i++ ) {
-    	x->buffer[i] = ((float)((val & 0x7fffffff) - 0x40000000)) * (float)(1.0 / 0x40000000);
+        x->buffer[i] = ((float)((val & 0x7fffffff) - 0x40000000)) * (float)(1.0 / 0x40000000);
         val = val * 435898247 + 382842987;
     }
 }
@@ -131,4 +131,3 @@ void pluck_tilde_setup(void) {
     
     class_addbang(pluck_tilde_class,(t_method)pluck_tilde_bang);
 }
-

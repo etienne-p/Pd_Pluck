@@ -1,3 +1,5 @@
 .DS_Store
 /Build
 *.xcodeproj
+*.o
+*.pd_darwin

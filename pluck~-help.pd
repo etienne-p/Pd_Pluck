@@ -1,15 +1,15 @@
-#N canvas 265 132 922 514 10;
+#N canvas -1395 380 922 514 10;
 #X obj 206 353 dac~;
 #X obj 38 124 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 180 305 pluck~;
 #X floatatom 410 174 5 0 0 0 - - -;
-#X obj 318 66 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4900 1;
+#X obj 305 68 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12600 1;
 #X msg 329 171 feedback;
 #X floatatom 236 170 5 0 0 0 - - -;
-#X obj 137 66 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1500 1;
+#X obj 126 67 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 4100 1;
 #X msg 178 164 freq;
 #X obj 237 142 mtof;
 #X obj 178 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -21,15 +21,15 @@
 #X obj 199 199 list;
 #X obj 200 226 list trim;
 #X floatatom 580 178 5 0 0 0 - - -;
-#X obj 488 70 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3900 1;
+#X obj 488 69 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5800 1;
 #X obj 512 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 500 226 list trim;
 #X obj 500 203 list;
 #X floatatom 736 188 5 0 0 0 - - -;
-#X obj 664 73 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4700 1;
+#X obj 665 71 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2700 1;
 #X obj 688 151 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 676 229 list trim;
